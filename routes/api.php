@@ -14,6 +14,25 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::group(['prefix' => 'cart'], function () {
+
+	// obtem carrinho ou todos os carrinhos
+	Route::get('/{cart_id?}', 'CartController@get');
+
+	// cria o carrinho
+	Route::post('/', 'CartController@create');
+	
+	// adiciona itens no carrinho
+	Route::post('/{cart_id}/add', 'CartController@addItem');
+
+	// altera item do carrinho
+	Route::put('/{cart_id}/{item_id}', 'CartController@updateItem');
+
+	// exclui item do carrinho
+	Route::delete('/{cart_id}/{item_id}/remove', 'CartController@removeItem');
+
+	// exclui o carrinho
+	Route::delete('/', 'CartController@delete');
+
 });
