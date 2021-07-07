@@ -87,5 +87,4 @@ class CartController extends Controller
 		# code...
 		return response()->json([]);
 	}
-
 }

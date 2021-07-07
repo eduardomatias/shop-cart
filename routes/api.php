@@ -22,7 +22,7 @@ Route::group(['prefix' => 'cart'], function () {
 
 	// cria o carrinho
 	Route::post('/', [CartController::class, 'create']);
-	
+
 	// adiciona itens no carrinho
 	Route::post('/{cart_id}/add', [CartController::class, 'addItem']);
 
@@ -34,5 +34,4 @@ Route::group(['prefix' => 'cart'], function () {
 
 	// exclui o carrinho
 	Route::delete('/{cart_id}', [CartController::class, 'delete']);
-
 });
